@@ -1,1 +1,1 @@
-Markup : * GitHub repo for my webpage
+* GitHub repo for my webpage
