@@ -1,5 +1,6 @@
 body { margin: 60px auto; width: 70%; }
 #author-name{font-size:30px;color:#272727;display:inline-block}
+.profile-picture{height:175px;width:175px;position:relative;margin:-25px 0 25px 50px;float:right;border-radius:50%}
 
 a { text-decoration: none; color: #999; }
 a:hover { text-decoration: underline; }
