@@ -1,55 +1,509 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-	<title>Mengjie Qian 钱梦洁</title>
-	<!-- link to main stylesheet -->
-	<link rel="stylesheet" type="text/css" href="/css/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mengjie Qian - Speech & Language Researcher</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #ffffff;
+            --text-color: #333333;
+            --secondary-bg: #f8f9fa;
+            --border-color: #e9ecef;
+            --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --font-serif: "Georgia", "Times New Roman", Times, serif;
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 1rem 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #555;
+            font-weight: 500;
+            transition: color 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 250px;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .hero-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .hero-text h2 {
+            font-size: 1.25rem;
+            color: #666;
+            font-weight: 400;
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .bio {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            color: #444;
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            display: block;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            object-fit: cover;
+            aspect-ratio: 1 / 1;
+        }
+
+        .social-links {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .btn-primary {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+            text-decoration: none;
+        }
+
+        /* Sections */
+        section {
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            padding: 0 20px;
+        }
+
+        h3.section-title {
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        /* Timeline Items (Experience/Education) */
+        .timeline-item {
+            margin-bottom: 2rem;
+            border-left: 3px solid var(--border-color);
+            padding-left: 2rem;
+            /* Increased padding to create space */
+            position: relative;
+        }
+
+        /* Adjusted circle positioning to not overlap text */
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            /* Centers on the border line (3px) -> -1.5px center line, 13px circle width -> left: -6.5px + nudge */
+            top: 6px;
+            width: 13px;
+            height: 13px;
+            background: white;
+            border: 3px solid var(--accent-color);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        /* Special class for News items to remove the circle and border */
+        .news-timeline-item {
+            margin-bottom: 1rem;
+            padding-left: 0;
+            border-left: none;
+            position: relative;
+        }
+
+        .news-timeline-item::before {
+            content: none;
+        }
+
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-role {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary-color);
+        }
+
+        .timeline-date {
+            color: #888;
+            font-size: 0.9rem;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .timeline-org {
+            font-weight: 500;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-desc {
+            font-size: 0.95rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        /* Publication List */
+        .pub-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .pub-title {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .pub-authors {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .pub-venue {
+            color: #555;
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        .pub-links a {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .pub-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Research Interest Tags */
+        .interests-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .interest-tag {
+            background: var(--secondary-bg);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .profile-photo {
+                width: 150px;
+                margin: 0 auto;
+            }
+
+            .hero-text {
+                order: 2;
+                text-align: center;
+            }
+
+            .hero-img {
+                order: 1;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
+
 <body>
-	<nav>
-		<a id="author-name" class="alignable pull-left" href="">Mengjie Qian 钱梦洁</a>
-            	<ul id="navlist" class="alignable pull-right navbar-ul">
-        	<li class="alignable pull-left nav-list"><a href="/">Home</a></li>
-	        <li class="alignable pull-left nav-list"><a href="#about-me">About</a></li>
-        	<li class="alignable pull-left nav-list"><a href="pdfs/MengjieQian_CV_20231207.pdf">CV</a></li>
-		<li class="alignable pull-left nav-list"><a href="#contact">Contact</a></li>
-<!-- 		<li class="alignable pull-left nav-list"><a target="_blank" href="pdfs/CV.pdf">CV</a> -->
-    	</ul>
-	</nav>
-	
-	
-	<div class="container">
-    	<div class="blurb">
-		
-	<h2 id="about-me">About Me</h2>
-<!-- 	<p><img class="profile-picture" src="images/mengjie.jpg" /></p> -->
-       	<p>Hello! I am a Research Associate in the Speech Group of the <a href="http://mi.eng.cam.ac.uk/">Machine Intelligence Laboratory</a>, Engineering Department of the University of Cambridge (CUED). </p>
-	<p>My Research Associate position at Cambridge University was started in April 2021, and I work with <a href="http://mi.eng.cam.ac.uk/~mjfg/">Professor Mark Gales</a> and <a href="http://mi.eng.cam.ac.uk/~kmk/">Dr. Kate Knill</a>. I am involved in the Automated Language Teaching and Assessment (ALTA) project, funded by Cambridge Assessment, and the Multimodal Video Search by Example (MVSE) project funded by EPSRC. </p>
-	<p>In 2021, I obtained my PhD degree at the University of Birmingham, supervised by <a href="https://www.birmingham.ac.uk/staff/profiles/computer-science/honorary-staff/russell-martin.aspx">Prof. Martin Russell</a> and <a href="https://www.birmingham.ac.uk/staff/profiles/eese/jancovic-peter.aspx">Dr. Peter Jančovič</a>. My PhD project is about computer analysis for children's non-native English speech.</p>
-     
-		
-	<h2 id="research-interest">Research Interests</h2>
-	<ul>
-		<li>Multimodal Information Retrieval (IR)</li>
-		<li>Automatic Speech Recognition (ASR)</li>
-		<li>Language Modelling (LM)</li>
-		<li>Natural Language Processing (NLP)</li>
-	</ul>
-    	
-	<h2 id="contact">Contact</h2>
-	<ul>
-		<li>Email: mq227@eng.cam.ac.uk</li>
-		<li>Trumpington Street, Cambridge, UK. CB2 1PZ</li>
-	<ul>
-		
-	</div><!-- /.blurb -->
-	</div><!-- /.container -->
-	
-<!-- 	<footer>
-    	<ul>
-        	<li><a href="mailto:mq227@cam.ac.uk">email</a></li>
-        	<li><a href="https://github.com/MengjieQian">github.com/MengjieQian</a></li>
-		</ul>
-	</footer> -->
+
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Mengjie Qian</a>
+            <div class="nav-links">
+                <a href="#experience">Experience</a>
+                <a href="#education">Education</a>
+                <a href="#grants">Grants</a>
+                <a href="#publications">Publications</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero" id="about">
+        <div class="hero-text">
+            <h1>Mengjie Qian <span style="font-size:0.6em; color:#888; font-weight:normal;">钱梦洁</span></h1>
+            <h2>Research Associate, University of Cambridge</h2>
+            <div class="bio">
+                <p>
+                    I am a Research Associate in the <a href="http://mi.eng.cam.ac.uk/">Machine Intelligence
+                        Laboratory</a> at the University of Cambridge, working with <a
+                        href="http://mi.eng.cam.ac.uk/~kmk/">Prof. Kate Knill</a> and <a
+                        href="http://mi.eng.cam.ac.uk/~mjfg/">Prof. Mark Gales</a>.
+                </p>
+                <p>
+                    My research focuses on <strong>speech foundation models (SFMs)</strong> and <strong>large language
+                        models (LLMs)</strong>, particularly their application in education and healthcare for
+                    low-resource languages.
+                </p>
+                <div class="interests-cloud" style="margin-top: 1rem;">
+                    <span class="interest-tag">Speech Foundation Models</span>
+                    <span class="interest-tag">LLMs</span>
+                    <span class="interest-tag">Spoken Language Assessment</span>
+                    <span class="interest-tag">Healthcare AI</span>
+                </div>
+                <div class="social-links">
+                    <a href="mailto:mq227@eng.cam.ac.uk" class="btn btn-primary">Email Me</a>
+                    <a href="https://scholar.google.com/citations?user=kVPiCXkAAAAJ&hl=zh-CN" class="btn btn-outline"
+                        target="_blank">Google Scholar</a>
+                    <a href="https://github.com/mengjieqian" class="btn btn-outline">GitHub</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-img">
+            <img src="IMG_5186.jpg" alt="Mengjie Qian Profile Photo" class="profile-photo">
+        </div>
+    </div>
+
+    <section id="news">
+        <h3 class="section-title">Latest Highlights</h3>
+        <div class="news-timeline-item">
+            <strong>Dec 2025:</strong> Awarded <em>Cambridge Language Sciences Incubator Fund</em> for research on
+            Alzheimer’s Dementia detection (£7.5k).
+        </div>
+        <div class="news-timeline-item">
+            <strong>Ongoing:</strong> Lead Organiser of the <em>Speak & Improve Challenge 2025</em>.
+        </div>
+    </section>
+
+    <section id="experience">
+        <h3 class="section-title">Professional Experience</h3>
+
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <span class="timeline-role">Research Associate</span>
+                <span class="timeline-date">Apr 2021 – Present</span>
+            </div>
+            <div class="timeline-org">University of Cambridge, UK</div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <span class="timeline-role">Research Consultant</span>
+                <span class="timeline-date">May 2020 – Present</span>
+            </div>
+            <div class="timeline-org">Trinity College Dublin, Ireland (Remote)</div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <span class="timeline-role">Applied Scientist Intern</span>
+                <span class="timeline-date">Dec 2018 – Mar 2019</span>
+            </div>
+            <div class="timeline-org">Amazon Development Center, Cambridge, UK</div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h3 class="section-title">Education</h3>
+
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <span class="timeline-role">Ph.D. in Engineering</span>
+                <span class="timeline-date">2016 – 2021</span>
+            </div>
+            <div class="timeline-org">University of Birmingham, UK</div>
+            <div class="timeline-desc">
+                Thesis: “Computer Analysis of Children’s Non-Native English Speech for Language Learning and
+                Assessment”<br>
+                Supervisors: <a
+                    href="https://www.birmingham.ac.uk/staff/profiles/computer-science/honorary-staff/russell-martin.aspx">Prof.
+                    Martin Russell</a>, <a
+                    href="https://www.birmingham.ac.uk/staff/profiles/eese/jancovic-peter.aspx">Dr. Peter Jančovič</a>.
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="timeline-header">
+                <span class="timeline-role">B.S. in Electronic Engineering</span>
+                <span class="timeline-date">2010 – 2014</span>
+            </div>
+            <div class="timeline-org">University of Science and Technology of China (USTC)</div>
+            <div class="timeline-desc">
+                Supervisor: <a href="https://sites.google.com/view/mcloughlin/research?authuser=0">Prof. Ian
+                    McLoughlin</a>.
+            </div>
+        </div>
+    </section>
+
+    <section id="grants">
+        <h3 class="section-title">Grants & Funding</h3>
+        <ul style="color: #444; line-height: 1.8;">
+            <li><strong>Lead Applicant</strong>, Cambridge Language Sciences Incubator Fund Award: “Beyond Accuracy:
+                Confidence-Aware Speech Models for Alzheimer’s Detection” (Dec 2025).</li>
+            <li><strong>Co-Applicant</strong>, Cambridge Language Sciences Incubator Fund Award: “Hearing Every Voice:
+                Interpretable Voice Quality Labelling for Inclusive AI” (Dec 2025).</li>
+            <li><strong>Co-Applicant</strong>, Cambridge Language Sciences Incubator Fund proposal: “The phonetics and
+                phonology of Llanito, Gibraltar’s dying language” (Submitted Jan 2026).</li>
+        </ul>
+    </section>
+
+    <section id="publications">
+        <h3 class="section-title">Selected Publications</h3>
+        <p style="margin-bottom: 2rem; color: #666;">
+            <em>Selected from 30+ peer-reviewed papers. See <a
+                    href="https://scholar.google.com/citations?user=kVPiCXkAAAAJ&hl=zh-CN"
+                    style="color:var(--accent-color)" target="_blank">Google Scholar</a> for full list.</em>
+        </p>
+
+        <!-- 2025 Papers -->
+        <div class="pub-item">
+            <div class="pub-title">Speak & Improve Challenge 2025: Tasks and Baseline Systems</div>
+            <div class="pub-authors"><strong>M. Qian</strong>, K. Knill, S. Banno, S. Tang, P. Karanasou, M. J. F.
+                Gales, D. Nicholls</div>
+            <div class="pub-venue">Proc. ISCA SLaTE 2025</div>
+            <div class="pub-links"><a href="https://www.isca-archive.org/slate_2025/qian25_slate.pdf">[PDF]</a></div>
+        </div>
+
+        <div class="pub-item">
+            <div class="pub-title">Speak & Improve Corpus 2025: an L2 English Speech Corpus for Language Assessment and
+                Feedback</div>
+            <div class="pub-authors">K. Knill, D. Nicholls, M. J. F. Gales, <strong>M. Qian</strong>, P. Stroinski</div>
+            <div class="pub-venue">arXiv preprint arXiv:2412.11986, 2025</div>
+            <div class="pub-links"><a href="https://arxiv.org/pdf/2412.11986">[PDF]</a></div>
+        </div>
+
+        <div class="pub-item">
+            <div class="pub-title">Can generative large language models perform asr error correction?</div>
+            <div class="pub-authors">R. Ma*, <strong>M. Qian*</strong>, M. Gales, K. Knill</div>
+            <div class="pub-venue">IEEE Transactions on Audio, Speech, and Language Processing (TASLP), 2025</div>
+            <div class="pub-links"><a href="https://arxiv.org/abs/2307.04172">[PDF]</a></div>
+        </div>
+
+        <div class="pub-item">
+            <div class="pub-title">Universal Acoustic Adversarial Attacks for Flexible Control of Speech-LLMs</div>
+            <div class="pub-authors">R. Ma, <strong>M. Qian</strong>, V. Raina, M. Gales, K. Knill</div>
+            <div class="pub-venue">EMNLP (Findings), 2025</div>
+            <div class="pub-links"><a href="https://aclanthology.org/2025.findings-emnlp.990.pdf">[PDF]</a></div>
+        </div>
+
+        <div class="pub-item">
+            <div class="pub-title">Scaling and Prompting for Improved End-to-End Spoken Grammatical Error Correction
+            </div>
+            <div class="pub-authors"><strong>M. Qian</strong>, R. Ma, S. Bannò, K. Knill, M. Gales</div>
+            <div class="pub-venue">Interspeech 2025</div>
+            <div class="pub-links"><a href="https://arxiv.org/pdf/2505.21137">[PDF]</a></div>
+        </div>
+
+        <div class="pub-item">
+            <div class="pub-title">Learn and Don’t Forget: Adding a New Language to ASR Foundation Models</div>
+            <div class="pub-authors"><strong>M. Qian</strong>, S. Tang, R. Ma, K. Knill, M. J. Gales</div>
+            <div class="pub-venue">Interspeech 2024</div>
+            <div class="pub-links"><a href="https://arxiv.org/pdf/2407.06800">[PDF]</a></div>
+        </div>
+
+        <div class="pub-item">
+            <div class="pub-title">Zero-shot Audio Topic Reranking using Large Language Models</div>
+            <div class="pub-authors"><strong>M. Qian</strong>, R. Ma, A. Liusie, E. Loweimi, K. M. Knill, M. Gales</div>
+            <div class="pub-venue">IEEE Spoken Language Technology (SLT) Workshop, 2025</div>
+            <div class="pub-links"><a href="https://arxiv.org/pdf/2309.07606">[PDF]</a></div>
+        </div>
+
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Mengjie Qian. <br>
+            <span style="font-size:0.85em; color:#888">Department of Engineering, University of Cambridge<br>
+                Built with modern web technologies.</span><br>
+            <span id="busuanzi_container_site_uv" style="font-size:0.8em; color:#888;">
+                Total Visitors: <span id="busuanzi_value_site_uv"></span>
+            </span>
+        </p>
+    </footer>
+
+    <!-- Visitor Counter Script (Busuanzi) -->
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
 </body>
+
 </html>
